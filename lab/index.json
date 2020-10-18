@@ -1,0 +1,17 @@
+{
+    "mappings": {
+        "dynamic": "true",
+        "_source": {
+            "enabled": "true"
+        },
+        "properties": {
+            "sentence": {
+                "type": "text"
+            },
+            "sentence_vector": {
+                "type": "dense_vector",
+                "dims": 768
+            }
+        }
+    }
+}

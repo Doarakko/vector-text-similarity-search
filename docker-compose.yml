@@ -1,0 +1,39 @@
+version: "3.7"
+services:
+  lab:
+    container_name: lab
+    build: ./lab
+    ports:
+      - "8888:8888"
+    depends_on:
+      - elasticsearch
+      - bertserver
+    volumes:
+      - ./lab:/app
+      - ./bertserver/model:/app/model
+    tty: true
+    command: jupyter lab --ip=0.0.0.0 --port 8888 --no-browser --allow-root --NotebookApp.token=''
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.4.2
+    container_name: elasticsearch
+    ports:
+      - "9200:9200"
+    volumes:
+      - es-data:/usr/share/elasticsearch/data
+    tty: true
+    environment:
+      discovery.type: single-node
+
+  bertserver:
+    container_name: bertserver
+    build: ./bertserver
+    ports:
+      - "5555:5555"
+      - "5556:5556"
+    volumes:
+      - ./bertserver/model:/app/model
+
+volumes:
+  es-data:
+    driver: local

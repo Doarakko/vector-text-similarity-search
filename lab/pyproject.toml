@@ -6,7 +6,7 @@ authors = ["Doarakko"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
-elasticsearch = "^7.9.1"
+elasticsearch = "^8.10.0"
 bert-serving-server = "^1.10.0"
 bert-serving-client = "^1.10.0"
 sentencepiece = "^0.1.99"

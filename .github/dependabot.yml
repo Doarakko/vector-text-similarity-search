@@ -3,7 +3,7 @@ updates:
   - package-ecosystem: "pip"
     directory: "/lab"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
     groups:
       patch:
         update-types:
